@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plasterManifest 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1" schemaVersion="1.0">
+  <metadata>
+    <name>FunctionTemplate</name>
+    <id>e72adf9d-026b-459b-be5f-ff73911c4211</id>
+    <version>0.0.1</version>
+    <title>Custom Function Stuff</title>
+    <description />
+    <author>User</author>
+    <tags />
+  </metadata>
+  <parameters>
+    <parameter name="FunctionName" type="text" prompt="Name of your Function" />
+    <parameter name="FunctionLocation" type="text" prompt="Path to your function file" />
+    <parameter name="Params" type="choice" prompt="Do you even want parameters in this function?" default='1'>
+      <choice label="&amp;Yes" help="Keeps the param() syntax" value="Yes" />
+      <choice label="&amp;No" help="Removes the param() boilerplate code" value="No" />
+    </parameter>
+  </parameters>
+  <content>
+    <file source='testsTemplate.ps1' destination='${PLASTER_PARAM_FunctionName}.tests.ps1' />
+    <modify path='${PLASTER_PARAM_FunctionName}.tests.ps1'>
+      <replace>
+        <original>xxModuleNamexx</original>
+        <substitute expand='true'>${PLASTER_PARAM_FunctionName}</substitute>
+      </replace>
+    </modify>
+    <templateFile source='functionTemplate.ps1' destination='${PLASTER_PARAM_FunctionName}.ps1'/>
+  </content>
+</plasterManifest>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Item" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>MyMan</name>
+    <id>363db590-623a-4d42-9aed-3838ed693f02</id>
+    <version>0.0.1</version>
+    <title>Default Powershell Module Config</title>
+    <description>Default Powershell Module Config</description>
+    <author>User</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="ModuleName" type="text" prompt="Name of your module" />
+    <parameter name="ModuleDesc" type="text" prompt="Brief description on this module" />
+    <parameter name="ModuleVersion" type="text" prompt="Version number" default='0.0.0.1' />
+    <parameter name="ModuleAuthor" type="user-fullname" prompt="Author"/>
+  </parameters>
+  <content>
+    <requireModule name="Pester" minimumVersion="3.4.0" message="No tests? No point..." />
+
+    <message> Module $PLASTER_PARAM_ModuleName </message>
+    <message>  Creating .psd1 </message>
+    <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc'/>
+
+    <message>  Creating .psm1 </message>
+    <file source='template.psm1' destination='${PLASTER_PARAM_ModuleName}.psm1'/>
+
+    <message>  Creating your tests </message>
+    <file destination='Tests\' source='' />
+    <file destination='Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' source='basicTest.ps1' />
+
+    <message>  Creating your folders </message>
+    <file destination='Public\' source='' />
+    <file destination='Internal\' source='' />
+    <file destination='Data' source='' />
+
+  </content>
+</plasterManifest>

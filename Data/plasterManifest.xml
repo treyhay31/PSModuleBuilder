@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest
+  schemaVersion="1.1"
+  templateType="Item" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>itrey-manifest</name>
+    <id>e5a2a3ed-3092-4901-b5a0-f997643376e3</id>
+    <version>0.0.1</version>
+    <title>itrey's Module Builder</title>
+    <description>Building modules up to 'itrey' standards</description>
+    <author>itrey</author>
+    <tags></tags>
+  </metadata>
+  <parameters></parameters>
+  <content></content>
+</plasterManifest>

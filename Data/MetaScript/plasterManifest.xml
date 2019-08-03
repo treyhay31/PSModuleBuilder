@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plasterManifest 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1" schemaVersion="1.0">
+  <metadata>
+    <name>ScriptTemplate</name>
+    <id>fa63e16f-1895-4217-a157-ef1624276f5c</id>
+    <version>0.0.1</version>
+    <title>Custom Script Stuff</title>
+    <description />
+    <author>User</author>
+    <tags />
+  </metadata>
+  <parameters>
+    <parameter name="ScriptName" type="text" prompt="Name of your Script (Work-Script)" />
+    <parameter name="ScriptLocation" type="text" prompt="Path to your script file" />
+    <parameter name="Params" type="choice" prompt="Do you even want parameters in this script?" default='1'>
+      <choice label="&amp;Yes" help="Keeps the param() syntax" value="Yes" />
+      <choice label="&amp;No" help="Removes the param() boilerplate code" value="No" />
+    </parameter>
+  </parameters>
+  <content>
+    <!-- <file source='testsTemplate.ps1' destination='${PLASTER_PARAM_ScriptName}.tests.ps1' /> 
+    <modify path='${PLASTER_PARAM_ScriptName}.tests.ps1'>
+      <replace>
+        <original>xxModuleNamexx</original>
+        <substitute expand='true'>${PLASTER_PARAM_ScriptName}</substitute>
+      </replace>
+    </modify> -->
+    <templateFile source='scriptTemplate.ps1' destination='${PLASTER_PARAM_ScriptName}.ps1'/>
+  </content>
+</plasterManifest>
