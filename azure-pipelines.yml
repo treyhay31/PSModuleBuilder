@@ -1,0 +1,19 @@
+# Pipeline to test and publish the PSModuleBuilder module
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+- script: pwsh -Command { Install-Module Plaster -Force }
+  displayName: 'Install Plaster...'
+- script: pwsh -Command { Install-Module Pester -Force }
+  displayName: 'Install Pester...'
+- script: pwsh -Command { Invoke-Pester }
+  displayName: 'Invoke pester tests...'
+- script: pwsh -File publish-me.ps1
+  displayName: 'Publish Module...'
+  env:
+    nugetapikey: $(NugetAPIKey)
