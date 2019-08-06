@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/itreyhayden/PSModuleBuilder/_apis/build/status/treyhay31.PSModuleBuilder?branchName=master)](https://dev.azure.com/itreyhayden/PSModuleBuilder/_build/latest?definitionId=1&branchName=master)
+
 # PSModuleBuilder
 
 Just making modules over here... sometimes scripts too.
